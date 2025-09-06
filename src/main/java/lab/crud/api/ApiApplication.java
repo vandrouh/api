@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class ApiApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
 	}
 	
+	//Método de teste
 	@GetMapping("/eco/{msg}")
 	public String eco(
 			@PathVariable("msg") String msg) {
