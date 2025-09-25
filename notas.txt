@@ -1,0 +1,17 @@
+
+
+Atalho para criar nova pasta no Windows Explorer -> Ctrl + SHIFT + N
+
+SHIFT + Insert -> cola no git bash
+
+Como alterar a referência do repositório remoto no repositório local?
+git remote set-url origin https://github.com/NomeDoSeuUsuarioGitHub/api3.git
+           ^^^^^^^                           ^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^^
+		      |                                       |                |
+		   opção que altera a referência              |             Nome do repositório 
+		                                              |
+												Nome do usuário do GitHub
+												
+												
+19 veio na  1ª aula
+
