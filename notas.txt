@@ -15,3 +15,4 @@ git remote set-url origin https://github.com/NomeDoSeuUsuarioGitHub/api3.git
 												
 19 veio na  1ª aula
 
+git push -u origin main
