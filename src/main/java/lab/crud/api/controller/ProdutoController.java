@@ -1,11 +1,13 @@
 package lab.crud.api.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +46,9 @@ public class ProdutoController {
 
 	@GetMapping("/produtos")
 	public ResponseEntity<Iterable<Produto>> obterTodos() {
+		
+		List<Produto> listProdutos = repository.findByNomeLike("%o%");
+				
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(repository.findAll());
@@ -91,6 +96,30 @@ public class ProdutoController {
 				.status(HttpStatus.OK)
 				.body("Produto atualizado com scesso!");
 	}
+	
+	//curl -X DELETE http://localhost:8081/produtos/1
+	@DeleteMapping("/produtos/{id}")
+	public ResponseEntity<Object> apagarProduto(
+			@PathVariable Integer id) {
+		
+		Optional<Produto> produto = repository.findById(id);
+		
+		if (produto.isEmpty()) {
+			
+			return ResponseEntity
+					.status(HttpStatus.NOT_FOUND)
+					.body("Produto não encontrado!");
+		}
+		
+		Produto prod = produto.get();
+		repository.delete(prod);
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("Produto apagado com sucesso!");
+			
+		}
+	
 
 }
 
